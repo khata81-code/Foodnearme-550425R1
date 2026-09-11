@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Good Nearby? — Food Directory for 550425</title>
+<meta name="description" content="Find good food within 2km of postal code 550425, Singapore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS — Winnie-the-Pooh-inspired woodland storybook
+   (original palette/typography, not copyrighted artwork)
+   ============================================================ */
+:root{
+  /* Palette */
+  --honey-deep:    #B4711F;   /* primary CTA / active accent */
+  --honey:         #D98E2B;   /* main honey accent */
+  --honey-light:   #F3C463;   /* highlights */
+  --cream:         #FBF3E1;   /* page background */
+  --paper:         #FFFBF2;   /* card background */
+  --paper-warm:    #FDF0D9;   /* alt panel background */
+  --bark:          #5B3E28;   /* headings / primary text */
+  --bark-soft:     #7A5C3E;   /* secondary text */
+  --moss:          #6E7B4E;   /* muted green accent */
+  --moss-deep:     #4F5B36;   /* moss text on light */
+  --berry:         #A6432E;   /* small red touches */
+  --line:          #E9D8AF;   /* hairline borders */
+  --shadow-soft:   0 6px 18px rgba(91,62,40,0.10);
+  --shadow-lift:   0 12px 28px rgba(91,62,40,0.16);
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--bark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg{ display:block; max-width:100%; }
+button{ font-family: inherit; }
+a{ color: inherit; }
+
+/* Woodland paper texture backdrop */
+body{
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(217,142,43,0.07) 0, transparent 45%),
+    radial-gradient(circle at 92% 8%, rgba(110,123,78,0.08) 0, transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(217,142,43,0.06) 0, transparent 45%);
+  background-attachment: fixed;
+}
+
+:focus-visible{
+  outline: 3px solid var(--honey-deep);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.visually-hidden{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+.wrap{ max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* ============================== HEADER ============================== */
+.site-header{
+  background: linear-gradient(180deg, #FFFDF7 0%, var(--cream) 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+.header-decor{
+  position:absolute; inset:0; pointer-events:none; opacity:0.55;
+}
+.header-inner{ position:relative; z-index:1; display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+.brand h1{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  margin: 0 0 6px;
+  color: var(--bark);
+  letter-spacing: -0.01em;
+}
+.brand .subtitle{
+  margin: 0 0 12px;
+  color: var(--bark-soft);
+  font-size: 1.05rem;
+  max-width: 44ch;
+}
+.locale-pills{ display:flex; gap:10px; flex-wrap:wrap; }
+.pill{
+  display:inline-flex; align-items:center; gap:6px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--bark-soft);
+  padding: 6px 13px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.map-cta{
+  display:inline-flex; align-items:center; gap:8px;
+  background: var(--honey-deep);
+  color: #fff;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  cursor:pointer;
+  text-decoration:none;
+  box-shadow: var(--shadow-soft);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  white-space: nowrap;
+}
+.map-cta:hover{ background:#9C5F19; transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+
+/* ============================== HERO / SUMMARY ============================== */
+.hero{
+  padding: 22px 0 6px;
+}
+.hero-card{
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-soft);
+}
+.hero-headline{
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--bark);
+  margin: 0;
+  max-width: 30ch;
+}
+.hero-stats{ display:flex; gap: 10px; flex-wrap: wrap; }
+.stat-chip{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--bark-soft);
+  display:flex; align-items:center; gap:6px;
+}
+.stat-chip strong{ color: var(--bark); font-family: var(--font-display); font-size: 1rem; font-weight: 600;}
+
+/* ============================== SEARCH ============================== */
+.search-section{ padding: 20px 0 6px; }
+.search-box{
+  position: relative;
+  max-width: 640px;
+}
+.search-box input{
+  width: 100%;
+  padding: 15px 18px 15px 46px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  font-size: 1rem;
+  color: var(--bark);
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-soft);
+}
+.search-box input::placeholder{ color: #A98F6B; }
+.search-box input:focus{ border-color: var(--honey); }
+.search-icon{
+  position:absolute; left:17px; top:50%; transform:translateY(-50%);
+  font-size:1.05rem; pointer-events:none;
+}
+
+/* ============================== FILTER BAR ============================== */
+.filter-bar{
+  padding: 18px 0 10px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: linear-gradient(180deg, var(--cream) 78%, rgba(251,243,225,0));
+  padding-top: 12px;
+}
+.filter-panel{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+}
+.filter-group{ margin-bottom: 14px; }
+.filter-group:last-child{ margin-bottom: 0; }
+.filter-label{
+  display:block;
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: var(--moss-deep);
+  margin-bottom: 8px;
+}
+.chip-row{ display:flex; flex-wrap:wrap; gap: 8px; }
+.chip{
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--bark-soft);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s ease;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.chip:hover{ border-color: var(--honey); color: var(--bark); }
+.chip[aria-pressed="true"]{
+  background: var(--honey-deep);
+  border-color: var(--honey-deep);
+  color: #fff;
+}
+.chip.budget-chip[aria-pressed="true"]{ background: var(--berry); border-color: var(--berry); }
+.filter-row-secondary{
+  display:flex; gap: 18px; flex-wrap: wrap; margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+.select-field{ display:flex; flex-direction:column; gap:6px; min-width: 190px; flex: 1 1 190px; }
+.select-field select{
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--bark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.clear-filters-btn{
+  align-self: flex-end;
+  background: transparent;
+  border: 1.5px solid var(--berry);
+  color: var(--berry);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.clear-filters-btn:hover{ background: var(--berry); color:#fff; }
+
+/* ============================== RESULTS META ============================== */
+.results-meta{
+  padding: 18px 0 4px;
+  display:flex; align-items:baseline; gap: 10px; flex-wrap:wrap;
+}
+.results-meta .count{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--bark);
+}
+.results-meta .active-filter{
+  color: var(--moss-deep);
+  font-weight: 700;
+  font-size: 0.92rem;
+  background: rgba(110,123,78,0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* ============================== GRID / CARDS ============================== */
+.results-section{ padding: 14px 0 60px; }
+.card-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 14px;
+}
+@media (max-width: 980px){ .card-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px){ .card-grid{ grid-template-columns: 1fr; } }
+
+.food-card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display:flex; flex-direction:column;
+  box-shadow: var(--shadow-soft);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.food-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+
+.card-media{
+  height: 128px;
+  position: relative;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, var(--honey-light), var(--honey));
+  overflow:hidden;
+}
+.card-media .icon-motif{ font-size: 2.6rem; filter: drop-shadow(0 3px 4px rgba(91,62,40,0.18)); }
+.card-media .distance-badge{
+  position:absolute; top:10px; right:10px;
+  background: rgba(255,251,242,0.92);
+  color: var(--bark);
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  display:flex; align-items:center; gap:4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.card-media .budget-badge{
+  position:absolute; top:10px; left:10px;
+  background: rgba(91,62,40,0.85);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+.card-body{ padding: 16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.card-body h3{
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--bark);
+  line-height: 1.25;
+}
+.card-meta-line{
+  font-size: 0.86rem;
+  color: var(--bark-soft);
+  display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+  font-weight: 700;
+}
+.card-meta-line .dot{ opacity:0.5; }
+.card-address{
+  font-size: 0.85rem;
+  color: var(--bark-soft);
+  display:flex; gap:6px; align-items:flex-start;
+}
+.card-desc{
+  font-size: 0.9rem;
+  color: var(--bark-soft);
+  margin: 2px 0 4px;
+  line-height: 1.5;
+}
+.card-rating-row{
+  display:flex; align-items:center; gap:6px;
+  font-weight: 800; font-size: 0.92rem; color: var(--bark);
+}
+.card-rating-row.unavailable{ color: #A98F6B; font-weight:700; }
+
+.card-actions{
+  display:grid; grid-template-columns: 1fr 1fr; gap: 9px;
+  margin-top: 10px;
+}
+.card-actions.secondary-row{ margin-top: 9px; }
+.action-btn{
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  padding: 10px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration:none;
+  border: 1.5px solid transparent;
+  cursor:pointer;
+  transition: all .15s ease;
+  text-align:center;
+}
+.action-btn.map{ background: var(--moss); color:#fff; }
+.action-btn.map:hover{ background: var(--moss-deep); }
+.action-btn.rating{ background: var(--paper-warm); color: var(--bark); border-color: var(--line); }
+.action-btn.grab{ background: #00B14F; color:#fff; }
+.action-btn.grab:hover{ filter:brightness(0.93); }
+.action-btn.foodpanda{ background: var(--berry); color:#fff; }
+.action-btn.foodpanda:hover{ filter:brightness(0.93); }
+.action-btn.unavailable{
+  background: var(--paper-warm);
+  color: #A98F6B;
+  cursor: not-allowed;
+  border-color: var(--line);
+}
+
+/* ============================== EMPTY / LOADING / ERROR STATES ============================== */
+.state-panel{
+  text-align:center;
+  padding: 60px 24px;
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-lg);
+  margin-top: 14px;
+}
+.state-panel .state-icon{ font-size: 2.6rem; margin-bottom: 10px; }
+.state-panel h3{
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0 0 8px;
+  color: var(--bark);
+}
+.state-panel p{ color: var(--bark-soft); margin: 0 0 18px; }
+.state-btn{
+  background: var(--honey-deep);
+  color:#fff;
+  border:none;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor:pointer;
+  font-size: 0.92rem;
+}
+.state-btn:hover{ background:#9C5F19; }
+
+.loader-dots{ display:inline-flex; gap:6px; margin-top:6px; }
+.loader-dots span{
+  width:9px; height:9px; border-radius:50%; background: var(--honey);
+  animation: bob 1s infinite ease-in-out;
+}
+.loader-dots span:nth-child(2){ animation-delay: .15s; }
+.loader-dots span:nth-child(3){ animation-delay: .3s; }
+@keyframes bob{ 0%,80%,100%{ transform: translateY(0); opacity:0.5;} 40%{ transform: translateY(-6px); opacity:1;} }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ============================== FOOTER ============================== */
+.site-footer{
+  border-top: 1px solid var(--line);
+  padding: 28px 0 40px;
+  text-align:center;
+  color: var(--bark-soft);
+  font-size: 0.85rem;
+}
+.site-footer strong{ color: var(--bark); }
+
+/* Mobile refinements */
+@media (max-width: 640px){
+  .header-inner{ flex-direction:column; }
+  .map-cta{ width:100%; justify-content:center; }
+  .filter-row-secondary{ flex-direction:column; }
+  .select-field{ min-width: 0; }
+  .clear-filters-btn{ align-self: stretch; text-align:center; }
+  .card-actions{ grid-template-columns: 1fr 1fr; }
+  .hero-card{ flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== HEADER ============================== -->
+<header class="site-header">
+  <div class="header-decor" aria-hidden="true" id="headerDecor"></div>
+  <div class="wrap header-inner">
+    <div class="brand">
+      <h1>🍯 What's Good Nearby?</h1>
+      <p class="subtitle">Discover good food within 2&nbsp;km of home.</p>
+      <div class="locale-pills">
+        <span class="pill">📍 Around 550425</span>
+        <span class="pill">🍯 Finding food within 2 km</span>
+      </div>
+    </div>
+    <a class="map-cta" id="viewAreaMapBtn" href="#" target="_blank" rel="noopener" aria-label="View this area on Google Maps, opens in a new tab">
+      🗺️ View Area on Google Maps
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============================== HERO SUMMARY ============================== -->
+  <section class="hero" aria-label="Search summary">
+    <div class="hero-card">
+      <p class="hero-headline">Good food is closer than you think.</p>
+      <div class="hero-stats">
+        <span class="stat-chip">📍 <strong>550425</strong></span>
+        <span class="stat-chip">🍯 <strong>2 km</strong> radius</span>
+        <span class="stat-chip">🍽️ <strong id="heroCount">–</strong> places found</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SEARCH ============================== -->
+  <section class="search-section" aria-label="Search">
+    <div class="search-box">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <label for="searchInput" class="visually-hidden">Search food, restaurant or cuisine</label>
+      <input type="text" id="searchInput" placeholder="🔍 Search food, restaurant or cuisine..." autocomplete="off">
+    </div>
+  </section>
+
+  <!-- ============================== FILTERS ============================== -->
+  <section class="filter-bar" aria-label="Filters">
+    <div class="filter-panel">
+
+      <div class="filter-group">
+        <span class="filter-label" id="budgetLabel">Budget</span>
+        <div class="chip-row" role="group" aria-labelledby="budgetLabel" id="budgetChips">
+          <!-- injected by JS -->
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label" id="cuisineLabel">Food type</span>
+        <div class="chip-row" role="group" aria-labelledby="cuisineLabel" id="cuisineChips">
+          <!-- injected by JS -->
+        </div>
+      </div>
+
+      <div class="filter-row-secondary">
+        <div class="select-field">
+          <label for="distanceSelect">Distance</label>
+          <select id="distanceSelect">
+            <option value="2000" selected>Within 2 km</option>
+            <option value="1500">Within 1.5 km</option>
+            <option value="1000">Within 1 km</option>
+            <option value="500">Within 500 m</option>
+          </select>
+        </div>
+        <div class="select-field">
+          <label for="sortSelect">Sort by</label>
+          <select id="sortSelect">
+            <option value="nearest" selected>Nearest</option>
+            <option value="furthest">Furthest</option>
+            <option value="price-low">Lowest price</option>
+            <option value="price-high">Highest price</option>
+            <option value="rating">Highest rating</option>
+          </select>
+        </div>
+        <button class="clear-filters-btn" id="clearFiltersBtn" type="button">Clear filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================== RESULTS META ============================== -->
+  <div class="results-meta" aria-live="polite">
+    <span class="count" id="resultsCount">Loading…</span>
+    <span class="active-filter" id="activeFilterTag" hidden></span>
+  </div>
+
+  <!-- ============================== RESULTS ============================== -->
+  <section class="results-section" aria-label="Food places">
+    <div id="loadingState" class="state-panel" hidden>
+      <div class="state-icon">🍯</div>
+      <h3>Looking for something yummy nearby...</h3>
+      <div class="loader-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+
+    <div id="errorState" class="state-panel" hidden>
+      <div class="state-icon">🐻</div>
+      <h3>We couldn't load the food directory right now.</h3>
+      <p>Something went wrong on our end.</p>
+      <button class="state-btn" id="retryBtn" type="button">Try again</button>
+    </div>
+
+    <div id="emptyState" class="state-panel" hidden>
+      <div class="state-icon">🍯</div>
+      <h3>Oh bother!</h3>
+      <p>We couldn't find a food place matching those filters.</p>
+      <button class="state-btn" id="emptyClearBtn" type="button">Clear filters</button>
+    </div>
+
+    <div id="cardGrid" class="card-grid" hidden></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p><strong>Sample data</strong> — this directory currently runs on a curated sample of real, publicly listed food places near postal code 550425 for demonstration. Ratings shown are sourced from Google Places where available and are never invented; distances are calculated live with the Haversine formula. Swap in a live places API by editing the <code>fetchRestaurants()</code> function in the source.</p>
+</footer>
+
+<script id="restaurant-data" type="application/json">
+[
+  {
+    "id": "r01",
+    "name": "onggii",
+    "category": "Korean",
+    "cuisine": "Korean",
+    "icon": "🍲",
+    "address": "23 Serangoon Central, #02-13, Singapore 556083",
+    "latitude": 1.3508623,
+    "longitude": 103.8724692,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.3,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=onggii%2C%2023%20Serangoon%20Central%2C%20%2302-13%2C%20Singapore%20556083&query_place_id=ChIJybfXKwAX2jERWYLVbcQXAxE",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A Korean soup-and-stew specialist inside NEX known for kimchi stew, ginseng chicken and comforting broths, served in a modern dine-in setting."
+  },
+  {
+    "id": "r02",
+    "name": "SEORAE JIB (NEX)",
+    "category": "Korean BBQ",
+    "cuisine": "Korean",
+    "icon": "🍲",
+    "address": "23 Serangoon Central, #B1-73/74 NEX, Singapore 556083",
+    "latitude": 1.3506853,
+    "longitude": 103.8719911,
+    "budget": "premium",
+    "budgetLabel": "Premium",
+    "priceRange": "$$$$",
+    "rating": 4.6,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=SEORAE%20JIB%20%28NEX%29%2C%2023%20Serangoon%20Central%2C%20%23B1-73/74%20NEX%2C%20Singapore%20556083&query_place_id=ChIJK2C7hIUX2jER7nDl5AqrQlc",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A popular Korean BBQ and makgeolli restaurant in NEX with attentive table-side service, geared toward a full sharing spread rather than a quick bite."
+  },
+  {
+    "id": "r03",
+    "name": "The Better Scoop",
+    "category": "Dessert",
+    "cuisine": "Dessert",
+    "icon": "🍧",
+    "address": "264 Serangoon Central, #01-203, Singapore 550264",
+    "latitude": 1.3520075,
+    "longitude": 103.872172,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.0,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=The%20Better%20Scoop%2C%20264%20Serangoon%20Central%2C%20%2301-203%2C%20Singapore%20550264&query_place_id=ChIJ87LwRssX2jERCDEsQepM_jA",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A Scandinavian-styled gelato and waffle shop near Serangoon MRT, known for reworking local flavours like nian gao and chrysanthemum tea into gelato."
+  },
+  {
+    "id": "r04",
+    "name": "Sweet Abyss at Minton",
+    "category": "Cafe & Dessert",
+    "cuisine": "Dessert",
+    "icon": "🍧",
+    "address": "4 Hougang St 11, #01-80, Singapore 538753",
+    "latitude": 1.3521209,
+    "longitude": 103.8812333,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.5,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Sweet%20Abyss%20at%20Minton%2C%204%20Hougang%20St%2011%2C%20%2301-80%2C%20Singapore%20538753&query_place_id=ChIJQ_qWQI8X2jERXjdeuDRC59o",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A cosy neighbourhood cafe at Minton condo serving waffles, ice cream and coffee, with a Shopee parcel collection counter on the side."
+  },
+  {
+    "id": "r05",
+    "name": "Shifudo",
+    "category": "Japanese",
+    "cuisine": "Japanese",
+    "icon": "🍣",
+    "address": "2 Jln Lokam, #01-50, Singapore 537846",
+    "latitude": 1.3455386,
+    "longitude": 103.8821701,
+    "budget": "higher",
+    "budgetLabel": "Higher",
+    "priceRange": "$$$",
+    "rating": 4.5,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Shifudo%2C%202%20Jln%20Lokam%2C%20%2301-50%2C%20Singapore%20537846&query_place_id=ChIJGfJcfqMX2jER7v0NFXL708w",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A compact Japanese restaurant known for generous, fresh sashimi cuts and well-balanced bento sets."
+  },
+  {
+    "id": "r06",
+    "name": "Myungdong k-food",
+    "category": "Korean",
+    "cuisine": "Korean",
+    "icon": "🍲",
+    "address": "9 Yio Chu Kang Rd, #01-09, Singapore 545523",
+    "latitude": 1.3545925,
+    "longitude": 103.8769008,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.8,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Myungdong%20k-food%2C%209%20Yio%20Chu%20Kang%20Rd%2C%20%2301-09%2C%20Singapore%20545523&query_place_id=ChIJ72PCKVAX2jERvck-xbLCUPs",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A tiny home-style Korean eatery run by a couple, known for freshly rolled kimbap, japchae and tteokbokki."
+  },
+  {
+    "id": "r07",
+    "name": "Infusion Roastery Cafe",
+    "category": "Cafe",
+    "cuisine": "Cafe",
+    "icon": "☕",
+    "address": "10A-E Yio Chu Kang Rd, ICB Shopping Centre, Singapore 545524",
+    "latitude": 1.3545874,
+    "longitude": 103.8776779,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.2,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Infusion%20Roastery%20Cafe%2C%2010A-E%20Yio%20Chu%20Kang%20Rd%2C%20ICB%20Shopping%20Centre%2C%20Singapore%20545524&query_place_id=ChIJ0UNzVcUX2jERczU6exaNTSw",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "An industrial-vibe specialty coffee roastery with a full food menu, including a well-loved seafood laksa pasta."
+  },
+  {
+    "id": "r08",
+    "name": "AR Eating House",
+    "category": "Indian",
+    "cuisine": "Indian",
+    "icon": "🍛",
+    "address": "768 Upper Serangoon Rd, #02-03 Hotel 81, Singapore 534636",
+    "latitude": 1.3542695,
+    "longitude": 103.8789222,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.1,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=AR%20Eating%20House%2C%20768%20Upper%20Serangoon%20Rd%2C%20%2302-03%20Hotel%2081%2C%20Singapore%20534636&query_place_id=ChIJzcmAuXEX2jERefh4Y61jxJg",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A 24-hour prata shop known for crisp prata and spiced masala tea, handy for a late-night bite."
+  },
+  {
+    "id": "r09",
+    "name": "Kaiyo Sushi and Grill",
+    "category": "Japanese",
+    "cuisine": "Japanese",
+    "icon": "🍣",
+    "address": "112 Yio Chu Kang Rd, Singapore 545580",
+    "latitude": 1.3585632,
+    "longitude": 103.874606,
+    "budget": "higher",
+    "budgetLabel": "Higher",
+    "priceRange": "$$$",
+    "rating": 4.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kaiyo%20Sushi%20and%20Grill%2C%20112%20Yio%20Chu%20Kang%20Rd%2C%20Singapore%20545580&query_place_id=ChIJrYflF0MX2jERE2jS3qA353I",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A neighbourhood Japanese restaurant offering premium sushi sets with otoro, uni and ikura alongside grilled dishes and sake."
+  },
+  {
+    "id": "r10",
+    "name": "Skinny Chef @ Hougang",
+    "category": "Western",
+    "cuisine": "Western",
+    "icon": "🍝",
+    "address": "Blk 121 Hougang Ave 1, #01-1340, Singapore 530121",
+    "latitude": 1.35359,
+    "longitude": 103.8869568,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Skinny%20Chef%20%40%20Hougang%2C%20Blk%20121%20Hougang%20Ave%201%2C%20%2301-1340%2C%20Singapore%20530121&query_place_id=ChIJf_NOykYX2jERcjlvib-CcG8",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A Western food stall in a coffee shop setting, serving chicken chops, steaks and fish & chips with a choice of sides."
+  },
+  {
+    "id": "r11",
+    "name": "Bugis Xin Yuan Ji Fish Soup",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "121 Hougang Ave 1, #01-1340, Singapore 530121",
+    "latitude": 1.3536109,
+    "longitude": 103.8869475,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 3.9,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bugis%20Xin%20Yuan%20Ji%20Fish%20Soup%2C%20121%20Hougang%20Ave%201%2C%20%2301-1340%2C%20Singapore%20530121&query_place_id=ChIJedTygUcX2jER2PN3ZGosuJ0",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A hawker stall specialising in fish soup and fish bee hoon, with wanton noodles also on the menu."
+  },
+  {
+    "id": "r12",
+    "name": "3 Meals a Day",
+    "category": "Chinese",
+    "cuisine": "Chinese",
+    "icon": "🥟",
+    "address": "121 Hougang Ave 1, #01-1346, Singapore 530121",
+    "latitude": 1.3537063,
+    "longitude": 103.8869236,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.1,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=3%20Meals%20a%20Day%2C%20121%20Hougang%20Ave%201%2C%20%2301-1346%2C%20Singapore%20530121&query_place_id=ChIJtXD1sU0X2jERZZ0MEN6A4DM",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A Malaysian-leaning zi char restaurant known for its fish head curry and salted egg chicken."
+  },
+  {
+    "id": "r13",
+    "name": "XLL Putian Restaurant",
+    "category": "Chinese",
+    "cuisine": "Chinese",
+    "icon": "🥟",
+    "address": "Hougang Ave 1, Singapore 530121",
+    "latitude": 1.3538611,
+    "longitude": 103.8869339,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.1,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=XLL%20Putian%20Restaurant%2C%20Hougang%20Ave%201%2C%20Singapore%20530121&query_place_id=ChIJuZ2bwrkX2jERA-BXoUuWoK8",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A no-frills Putian eatery tucked among the housing blocks, serving lor mee, fried bee hoon and other Xing Hua specialities."
+  },
+  {
+    "id": "r14",
+    "name": "Kiev's Cuisine Hougang Ave 1",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "118 Hougang Ave 1, #01-1188, Singapore 530118",
+    "latitude": 1.3534602,
+    "longitude": 103.8874975,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.0,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kiev%27s%20Cuisine%20Hougang%20Ave%201%2C%20118%20Hougang%20Ave%201%2C%20%2301-1188%2C%20Singapore%20530118&query_place_id=ChIJJyfN1I8X2jERxGthwEmZPVM",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A budget economic-rice and noodle stall good for a quick, affordable breakfast or lunch."
+  },
+  {
+    "id": "r15",
+    "name": "Lazy Lizard - The Promenade",
+    "category": "Western",
+    "cuisine": "Western",
+    "icon": "🍝",
+    "address": "183 Jln Pelikat, #01-20 The Promenade @ Pelikat, Singapore 537643",
+    "latitude": 1.3550197,
+    "longitude": 103.8873991,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.7,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lazy%20Lizard%20-%20The%20Promenade%2C%20183%20Jln%20Pelikat%2C%20%2301-20%20The%20Promenade%20%40%20Pelikat%2C%20Singapore%20537643&query_place_id=ChIJmw790WoX2jERJjjK6P2R8ds",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A family-friendly Western restaurant and bar known for BBQ ribs, pizza and a hearty all-day breakfast."
+  },
+  {
+    "id": "r16",
+    "name": "ONSHIC Korean Kitchen",
+    "category": "Korean",
+    "cuisine": "Korean",
+    "icon": "🍲",
+    "address": "183 Jln Pelikat, #01-04, Singapore 537643",
+    "latitude": 1.3551726,
+    "longitude": 103.8879659,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 5.0,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=ONSHIC%20Korean%20Kitchen%2C%20183%20Jln%20Pelikat%2C%20%2301-04%2C%20Singapore%20537643&query_place_id=ChIJOZSjQQAX2jERW5yPro6Rqd8",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A small home-style Korean kitchen known for its rotating spread of banchan alongside bulgogi and spicy pork sets."
+  },
+  {
+    "id": "r17",
+    "name": "JM (Sisters) Noodle House",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "183 Jln Pelikat, #01-01 The Promenade @ Pelikat, Singapore 537643",
+    "latitude": 1.3553913,
+    "longitude": 103.8882339,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.7,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=JM%20%28Sisters%29%20Noodle%20House%2C%20183%20Jln%20Pelikat%2C%20%2301-01%20The%20Promenade%20%40%20Pelikat%2C%20Singapore%20537643&query_place_id=ChIJ000aqTgX2jERTpa6E7dL0RU",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A single-dish specialist serving a well-loved bowl of soupy Ipoh hor fun topped with prawns and shredded chicken."
+  },
+  {
+    "id": "r18",
+    "name": "Popeyes Heartland Mall Kovan",
+    "category": "Fast Food",
+    "cuisine": "Fast Food",
+    "icon": "🍔",
+    "address": "205 Hougang St 21, #01-06 Heartland Mall, Singapore 530205",
+    "latitude": 1.359469,
+    "longitude": 103.8851289,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.8,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Popeyes%20Heartland%20Mall%20Kovan%2C%20205%20Hougang%20St%2021%2C%20%2301-06%20Heartland%20Mall%2C%20Singapore%20530205&query_place_id=ChIJtVUlfwAX2jERSeKs4CX-RAk",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A 24-hour fried chicken chain outlet known for crispy, well-seasoned pieces and quick, friendly service."
+  },
+  {
+    "id": "r19",
+    "name": "LoFi X Whisk by M",
+    "category": "Dessert",
+    "cuisine": "Dessert",
+    "icon": "🍧",
+    "address": "108 Hougang Ave 1, #01-1281, Singapore 530108",
+    "latitude": 1.352862,
+    "longitude": 103.889926,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.7,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=LoFi%20X%20Whisk%20by%20M%2C%20108%20Hougang%20Ave%201%2C%20%2301-1281%2C%20Singapore%20530108&query_place_id=ChIJ9UVmKtsX2jERYryVc5sHloY",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A dessert bar known for waffles, ice cream and made-to-order cakes, open into the late evening."
+  },
+  {
+    "id": "r20",
+    "name": "Mufiz Restaurant",
+    "category": "Indian",
+    "cuisine": "Indian",
+    "icon": "🍛",
+    "address": "Singapore 530138",
+    "latitude": 1.3533577,
+    "longitude": 103.8897785,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.2,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Mufiz%20Restaurant%2C%20Singapore%20530138&query_place_id=ChIJ-6cDeQAX2jERMJqU8ZjNgIY",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "An Indian and Thai-Muslim eatery serving prata, nasi goreng and mihun with both indoor and outdoor seating."
+  },
+  {
+    "id": "r21",
+    "name": "Kovan 209 Market & Food Centre",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "209 Hougang St 21, Singapore 530209",
+    "latitude": 1.3592428,
+    "longitude": 103.8860309,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.0,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Kovan%20209%20Market%20%26%20Food%20Centre%2C%20209%20Hougang%20St%2021%2C%20Singapore%20530209&query_place_id=ChIJJS_AGAAX2jERtscNCsY5nWs",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A long-standing neighbourhood hawker centre with noodle, duck rice, porridge and Teochew kueh stalls."
+  },
+  {
+    "id": "r22",
+    "name": "OMMA Chicken Soup",
+    "category": "Korean",
+    "cuisine": "Korean",
+    "icon": "🍲",
+    "address": "Hougang St 21, #01-11 Kovan Market, Singapore 530209",
+    "latitude": 1.3591697,
+    "longitude": 103.8862162,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=OMMA%20Chicken%20Soup%2C%20Hougang%20St%2021%2C%20%2301-11%20Kovan%20Market%2C%20Singapore%20530209&query_place_id=ChIJMTIUJ0YX2jERsU4pW51GpTw",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A hawker stall specialising in slow-simmered, MSG-free Korean-style chicken soups."
+  },
+  {
+    "id": "r23",
+    "name": "Hougang Hainanese Village Centre",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "Blk 105 Hougang Ave 1, Singapore 530105",
+    "latitude": 1.3540401,
+    "longitude": 103.8899682,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.1,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hougang%20Hainanese%20Village%20Centre%2C%20Blk%20105%20Hougang%20Ave%201%2C%20Singapore%20530105&query_place_id=ChIJXSLkG7gX2jERr-n5MqtSkws",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A spacious hawker centre known for Hainanese pork chop, fish soup and other traditional hawker staples."
+  },
+  {
+    "id": "r24",
+    "name": "Hougang Ave 1 Blk 105 Market & Food Centre",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "105 Hougang Ave 1, Singapore 530105",
+    "latitude": 1.3540215,
+    "longitude": 103.8900223,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.1,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Hougang%20Ave%201%20Blk%20105%20Market%20%26%20Food%20Centre%2C%20105%20Hougang%20Ave%201%2C%20Singapore%20530105&query_place_id=ChIJP-H8G7gX2jERP9t5RNaS8xk",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A neighbourhood market and food centre known for its kuey chap and zi char stalls."
+  },
+  {
+    "id": "r25",
+    "name": "Quan Ji Cooked Food",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "105 Hougang Ave 1, #02-37 Hainanese Village Centre, Singapore 530105",
+    "latitude": 1.3539382,
+    "longitude": 103.8901409,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.3,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Quan%20Ji%20Cooked%20Food%2C%20105%20Hougang%20Ave%201%2C%20%2302-37%20Hainanese%20Village%20Centre%2C%20Singapore%20530105&query_place_id=ChIJDwOQetwX2jERFyYN5BE88hg",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A hawker stall known for its Hokkien mee and char kway teow, cooked with a strong wok hei flavour."
+  },
+  {
+    "id": "r26",
+    "name": "Jiu Ji Shu Shi",
+    "category": "Hawker",
+    "cuisine": "Hawker",
+    "icon": "🥢",
+    "address": "105 Hougang Ave 1, Singapore 530105",
+    "latitude": 1.3539701,
+    "longitude": 103.8901396,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.2,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Jiu%20Ji%20Shu%20Shi%2C%20105%20Hougang%20Ave%201%2C%20Singapore%20530105&query_place_id=ChIJ0UDRG7gX2jER1zupry9GvL8",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A morning hawker stall known for old-school mee siam, run by long-time elderly hawkers."
+  },
+  {
+    "id": "r27",
+    "name": "On Pause",
+    "category": "Cafe",
+    "cuisine": "Cafe",
+    "icon": "☕",
+    "address": "37 Lowland Rd, Singapore 547440",
+    "latitude": 1.3613927,
+    "longitude": 103.8832035,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=On%20Pause%2C%2037%20Lowland%20Rd%2C%20Singapore%20547440&query_place_id=ChIJ3cBzSkgX2jERbDu2WR_-R2A",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A pet-friendly neighbourhood cafe serving pasta, steak frites and waffles in a relaxed setting."
+  },
+  {
+    "id": "r28",
+    "name": "Chindamani Indian Restaurant",
+    "category": "Indian",
+    "cuisine": "Indian",
+    "icon": "🍛",
+    "address": "108 Hougang Ave 1, #01-1263, Singapore 530108",
+    "latitude": 1.3530738,
+    "longitude": 103.8906133,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 3.9,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chindamani%20Indian%20Restaurant%2C%20108%20Hougang%20Ave%201%2C%20%2301-1263%2C%20Singapore%20530108&query_place_id=ChIJ_____1YW2jERK63bsKwVVXo",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A 24-hour Indian eatery known for its crispy prata and well-brewed teh tarik."
+  },
+  {
+    "id": "r29",
+    "name": "Beans.Factory - Dessert & Beancurd",
+    "category": "Dessert",
+    "cuisine": "Dessert",
+    "icon": "🍧",
+    "address": "211 Hougang St 21, #01-291, Singapore 530211",
+    "latitude": 1.3593451,
+    "longitude": 103.887578,
+    "budget": "budget",
+    "budgetLabel": "Budget",
+    "priceRange": "$",
+    "rating": 4.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Beans.Factory%20-%20Dessert%20%26%20Beancurd%2C%20211%20Hougang%20St%2021%2C%20%2301-291%2C%20Singapore%20530211&query_place_id=ChIJ68_7jQAX2jER4CnzDTUIk5M",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A dessert stall offering DIY shaved-ice bowls, beancurd and a rotating range of toppings."
+  },
+  {
+    "id": "r30",
+    "name": "Lola's Cafe",
+    "category": "Cafe",
+    "cuisine": "Cafe",
+    "icon": "☕",
+    "address": "5 Simon Rd, Singapore 545893",
+    "latitude": 1.3616352,
+    "longitude": 103.8859561,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 4.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Lola%27s%20Cafe%2C%205%20Simon%20Rd%2C%20Singapore%20545893&query_place_id=ChIJV1FWhrQX2jERW2niVztAIj8",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A well-loved cafe near Kovan MRT known for honey paprika wings, hojicha latte and cosy indoor-outdoor seating."
+  },
+  {
+    "id": "r31",
+    "name": "Al Mubin Restaurant",
+    "category": "Indian",
+    "cuisine": "Indian",
+    "icon": "🍛",
+    "address": "212 Hougang St 21, #01-343, Singapore 530212",
+    "latitude": 1.3595524,
+    "longitude": 103.8884823,
+    "budget": "moderate",
+    "budgetLabel": "Moderate",
+    "priceRange": "$$",
+    "rating": 3.4,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Al%20Mubin%20Restaurant%2C%20212%20Hougang%20St%2021%2C%20%2301-343%2C%20Singapore%20530212&query_place_id=ChIJE8Ua3jsX2jERAG8RxkneTfg",
+    "grabFoodUrl": "https://food.grab.com/sg/en/",
+    "foodpandaUrl": "https://www.foodpanda.sg/",
+    "description": "A 24-hour Indian eatery known for briyani, mutton dishes and a busy late-night Maggi goreng trade."
+  }
+]
+</script>
+
+<script>
+document.getElementById('headerDecor').innerHTML = `
+<svg width="100%" height="100%" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <pattern id="honeycomb" width="46" height="80" patternUnits="userSpaceOnUse" patternTransform="scale(0.9)">
+      <path d="M23 0 L46 13.3 L46 40 L23 53.3 L0 40 L0 13.3 Z" fill="none" stroke="#D98E2B" stroke-width="1" opacity="0.10"/>
+      <path d="M23 40 L46 53.3 L46 80 L23 93.3 L0 80 L0 53.3 Z" fill="none" stroke="#D98E2B" stroke-width="1" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="1200" height="220" fill="url(#honeycomb)"/>
+
+  <!-- leaf cluster, top right -->
+  <g transform="translate(1030,10) rotate(8)" opacity="0.5">
+    <path d="M0 40 C10 10 40 0 60 8 C50 28 30 44 0 40Z" fill="#6E7B4E" opacity="0.35"/>
+    <path d="M20 46 C28 22 52 12 68 18 C60 34 44 48 20 46Z" fill="#6E7B4E" opacity="0.25"/>
+  </g>
+
+  <!-- honey pot, bottom left -->
+  <g transform="translate(36,140)" opacity="0.55">
+    <path d="M6 24 Q6 12 30 12 Q54 12 54 24 L50 52 Q30 60 10 52 Z" fill="#D98E2B" opacity="0.28"/>
+    <rect x="4" y="8" width="52" height="10" rx="5" fill="#B4711F" opacity="0.3"/>
+  </g>
+
+  <!-- bee, drifting -->
+  <g transform="translate(560,26)" opacity="0.55">
+    <ellipse cx="0" cy="0" rx="9" ry="6.5" fill="#5B3E28" opacity="0.35"/>
+    <path d="M-9 0 h18" stroke="#F3C463" stroke-width="3" opacity="0.5"/>
+    <ellipse cx="-13" cy="-6" rx="7" ry="4" fill="#F3C463" opacity="0.35"/>
+    <ellipse cx="13" cy="-6" rx="7" ry="4" fill="#F3C463" opacity="0.35"/>
+  </g>
+
+  <!-- small cloud -->
+  <g transform="translate(800,50)" opacity="0.4">
+    <ellipse cx="0" cy="10" rx="26" ry="14" fill="#FFFBF2"/>
+    <ellipse cx="24" cy="4" rx="20" ry="12" fill="#FFFBF2"/>
+    <ellipse cx="-22" cy="6" rx="18" ry="11" fill="#FFFBF2"/>
+  </g>
+
+  <!-- woodland tree silhouette -->
+  <g transform="translate(150,60)" opacity="0.18">
+    <path d="M40 0 L70 55 L55 55 L80 100 L60 100 L60 140 L20 140 L20 100 L0 100 L25 55 L10 55 Z" fill="#6E7B4E"/>
+  </g>
+</svg>
+`;
+
+(function () {
+  'use strict';
+
+  // ============================================================
+  // 1. LOCATION — centre point for postal code 550425, Singapore
+  // ============================================================
+  var CENTER = { lat: 1.348201, lon: 103.876532, postalCode: '550425' };
+  var MAX_RADIUS_M = 2000; // 2 km directory limit
+
+  // ============================================================
+  // 2. DISTANCE CALCULATION — Haversine formula
+  // ============================================================
+  function haversineMeters(lat1, lon1, lat2, lon2) {
+    var R = 6371000; // Earth radius in metres
+    var toRad = function (d) { return (d * Math.PI) / 180; };
+    var phi1 = toRad(lat1), phi2 = toRad(lat2);
+    var dPhi = toRad(lat2 - lat1);
+    var dLambda = toRad(lon2 - lon1);
+    var a = Math.sin(dPhi / 2) * Math.sin(dPhi / 2) +
+      Math.cos(phi1) * Math.cos(phi2) *
+      Math.sin(dLambda / 2) * Math.sin(dLambda / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  function formatDistance(m) {
+    if (m < 1000) return Math.round(m) + ' m away';
+    return (m / 1000).toFixed(1) + ' km away';
+  }
+
+  // ============================================================
+  // 3. RESTAURANT DATA — loaded from embedded JSON (sample data).
+  //    ---------------------------------------------------------
+  //    TO CONNECT A REAL API: replace the body of fetchRestaurants()
+  //    below with a fetch() call to a real places/restaurant API
+  //    (e.g. Google Places, a restaurant directory, or your own
+  //    backend). Keep the returned shape identical to the objects
+  //    below so the rest of the app keeps working unchanged.
+  //    NEVER hardcode a real API key in this file — route requests
+  //    through your own backend if a secret key is required.
+  // ============================================================
+  var RAW_DATA = JSON.parse(document.getElementById('restaurant-data').textContent);
+
+  function fetchRestaurants() {
+    // Simulated async load of sample data. Swap this for:
+    //   return fetch('/api/restaurants?postal=550425&radius=2000').then(r => r.json());
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          resolve(RAW_DATA);
+        } catch (e) {
+          reject(e);
+        }
+      }, 550);
+    });
+  }
+
+  // ============================================================
+  // 4. STATE
+  // ============================================================
+  var state = {
+    all: [],            // full dataset with computed distance
+    query: '',
+    budget: 'all',       // 'all' | 'budget' | 'moderate' | 'higher' | 'premium'
+    cuisine: 'All',
+    maxDistance: 2000,
+    sort: 'nearest'
+  };
+
+  var BUDGETS = [
+    { key: 'all', label: 'All budgets', icon: '' },
+    { key: 'budget', label: 'Budget — under $10', icon: '💰' },
+    { key: 'moderate', label: 'Moderate — $10–20', icon: '💰💰' },
+    { key: 'higher', label: 'Higher — $20–35', icon: '💰💰💰' },
+    { key: 'premium', label: 'Premium — $35+', icon: '💰💰💰💰' }
+  ];
+
+  var CUISINES = ['All', 'Chinese', 'Malay', 'Indian', 'Japanese', 'Korean', 'Western', 'Cafe', 'Fast Food', 'Hawker', 'Vegetarian', 'Dessert', 'Drinks'];
+
+  var BUDGET_ORDER = { budget: 0, moderate: 1, higher: 2, premium: 3 };
+
+  // ============================================================
+  // 5. DOM REFS
+  // ============================================================
+  var els = {
+    heroCount: document.getElementById('heroCount'),
+    resultsCount: document.getElementById('resultsCount'),
+    activeFilterTag: document.getElementById('activeFilterTag'),
+    cardGrid: document.getElementById('cardGrid'),
+    loadingState: document.getElementById('loadingState'),
+    errorState: document.getElementById('errorState'),
+    emptyState: document.getElementById('emptyState'),
+    searchInput: document.getElementById('searchInput'),
+    budgetChips: document.getElementById('budgetChips'),
+    cuisineChips: document.getElementById('cuisineChips'),
+    distanceSelect: document.getElementById('distanceSelect'),
+    sortSelect: document.getElementById('sortSelect'),
+    clearFiltersBtn: document.getElementById('clearFiltersBtn'),
+    emptyClearBtn: document.getElementById('emptyClearBtn'),
+    retryBtn: document.getElementById('retryBtn'),
+    viewAreaMapBtn: document.getElementById('viewAreaMapBtn')
+  };
+
+  // ============================================================
+  // 6. INIT: build filter chips
+  // ============================================================
+  function buildChips() {
+    BUDGETS.forEach(function (b) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'chip budget-chip';
+      chip.setAttribute('aria-pressed', b.key === 'all' ? 'true' : 'false');
+      chip.dataset.budget = b.key;
+      chip.innerHTML = (b.icon ? b.icon + ' ' : '') + b.label;
+      chip.addEventListener('click', function () {
+        state.budget = b.key;
+        syncChipGroup(els.budgetChips, 'budget', b.key);
+        render();
+      });
+      els.budgetChips.appendChild(chip);
+    });
+
+    CUISINES.forEach(function (c) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'chip cuisine-chip';
+      chip.setAttribute('aria-pressed', c === 'All' ? 'true' : 'false');
+      chip.dataset.cuisine = c;
+      chip.textContent = c;
+      chip.addEventListener('click', function () {
+        state.cuisine = c;
+        syncChipGroup(els.cuisineChips, 'cuisine', c);
+        render();
+      });
+      els.cuisineChips.appendChild(chip);
+    });
+  }
+
+  function syncChipGroup(container, datasetKey, activeValue) {
+    Array.prototype.forEach.call(container.children, function (chip) {
+      var isActive = chip.dataset[datasetKey] === String(activeValue);
+      chip.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  // ============================================================
+  // 7. FILTER + SORT + SEARCH PIPELINE
+  // ============================================================
+  function getFilteredResults() {
+    var q = state.query.trim().toLowerCase();
+
+    var list = state.all.filter(function (r) {
+      if (r.distance > state.maxDistance) return false;
+      if (state.budget !== 'all' && r.budget !== state.budget) return false;
+      if (state.cuisine !== 'All' && r.cuisine !== state.cuisine) return false;
+      if (q) {
+        var haystack = (r.name + ' ' + r.cuisine + ' ' + r.category + ' ' + r.address).toLowerCase();
+        if (haystack.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+
+    list.sort(function (a, b) {
+      switch (state.sort) {
+        case 'furthest': return b.distance - a.distance;
+        case 'price-low': return BUDGET_ORDER[a.budget] - BUDGET_ORDER[b.budget];
+        case 'price-high': return BUDGET_ORDER[b.budget] - BUDGET_ORDER[a.budget];
+        case 'rating':
+          var ar = a.rating == null ? -1 : a.rating;
+          var br = b.rating == null ? -1 : b.rating;
+          return br - ar;
+        case 'nearest':
+        default: return a.distance - b.distance;
+      }
+    });
+
+    return list;
+  }
+
+  // ============================================================
+  // 8. RENDER
+  // ============================================================
+  function cardTemplate(r) {
+    var ratingHtml = (r.rating != null)
+      ? '<span class="card-rating-row"><span aria-hidden="true">⭐</span> ' + r.rating.toFixed(1) + '</span>'
+      : '<span class="card-rating-row unavailable"><span aria-hidden="true">⭐</span> Rating unavailable</span>';
+
+    var ratingBtnLabel = (r.rating != null) ? ('⭐ ' + r.rating.toFixed(1)) : '⭐ Rating unavailable';
+
+    return (
+      '<article class="food-card" data-id="' + r.id + '">' +
+        '<div class="card-media">' +
+          '<span class="budget-badge">' + r.priceRange + '</span>' +
+          '<span class="distance-badge">🚶 ' + formatDistance(r.distance) + '</span>' +
+          '<span class="icon-motif" aria-hidden="true">' + r.icon + '</span>' +
+        '</div>' +
+        '<div class="card-body">' +
+          '<h3>' + escapeHtml(r.name) + '</h3>' +
+          '<div class="card-meta-line">' +
+            '<span>' + r.icon + ' ' + escapeHtml(r.cuisine) + '</span>' +
+            '<span class="dot">•</span>' +
+            '<span>' + r.priceRange + ' · ' + r.budgetLabel + '</span>' +
+          '</div>' +
+          '<div class="card-address">📍 <span>' + escapeHtml(r.address) + '</span></div>' +
+          '<p class="card-desc">' + escapeHtml(r.description) + '</p>' +
+          ratingHtml +
+          '<div class="card-actions">' +
+            '<a class="action-btn map" href="' + r.googleMapsUrl + '" target="_blank" rel="noopener" aria-label="Open ' + escapeHtml(r.name) + ' in Google Maps">📍 Map</a>' +
+            '<button type="button" class="action-btn rating" data-rating-btn aria-label="' + ratingBtnLabel + '">' + ratingBtnLabel + '</button>' +
+          '</div>' +
+          '<div class="card-actions secondary-row">' +
+            grabButton(r) +
+            foodpandaButton(r) +
+          '</div>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function grabButton(r) {
+    if (!r.grabFoodUrl) {
+      return '<span class="action-btn unavailable" aria-disabled="true">Order on GrabFood — unavailable</span>';
+    }
+    return '<a class="action-btn grab" href="' + r.grabFoodUrl + '" target="_blank" rel="noopener" aria-label="Search for ' + escapeHtml(r.name) + ' on GrabFood">Order on GrabFood</a>';
+  }
+
+  function foodpandaButton(r) {
+    if (!r.foodpandaUrl) {
+      return '<span class="action-btn unavailable" aria-disabled="true">Order on foodpanda — unavailable</span>';
+    }
+    return '<a class="action-btn foodpanda" href="' + r.foodpandaUrl + '" target="_blank" rel="noopener" aria-label="Search for ' + escapeHtml(r.name) + ' on foodpanda">Order on foodpanda</a>';
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str == null ? '' : String(str);
+    return div.innerHTML;
+  }
+
+  function activeFilterSummary(count) {
+    var parts = [];
+    if (state.cuisine !== 'All') parts.push(state.cuisine);
+    if (state.budget !== 'all') {
+      var b = BUDGETS.filter(function (x) { return x.key === state.budget; })[0];
+      parts.push(b.label.split(' — ')[1] || b.label);
+    }
+    if (state.maxDistance !== 2000) parts.push('within ' + (state.maxDistance >= 1000 ? (state.maxDistance / 1000) + ' km' : state.maxDistance + ' m'));
+    if (state.query.trim()) parts.push('"' + state.query.trim() + '"');
+    return parts.length ? ('Showing ' + count + ' places • ' + parts.join(' + ')) : null;
+  }
+
+  function render() {
+    var results = getFilteredResults();
+    var totalWithinRadius = state.all.filter(function (r) { return r.distance <= MAX_RADIUS_M; }).length;
+
+    els.heroCount.textContent = totalWithinRadius;
+    els.resultsCount.textContent = totalWithinRadius + ' food places within 2 km';
+
+    var summary = activeFilterSummary(results.length);
+    if (summary) {
+      els.activeFilterTag.hidden = false;
+      els.activeFilterTag.textContent = summary;
+    } else {
+      els.activeFilterTag.hidden = true;
+    }
+
+    if (results.length === 0) {
+      els.cardGrid.hidden = true;
+      els.emptyState.hidden = false;
+      els.errorState.hidden = true;
+      return;
+    }
+
+    els.emptyState.hidden = true;
+    els.errorState.hidden = true;
+    els.cardGrid.hidden = false;
+    els.cardGrid.innerHTML = results.map(cardTemplate).join('');
+  }
+
+  // ============================================================
+  // 9. LOAD FLOW (loading / error / success states)
+  // ============================================================
+  function showLoading() {
+    els.loadingState.hidden = false;
+    els.errorState.hidden = true;
+    els.emptyState.hidden = true;
+    els.cardGrid.hidden = true;
+    els.resultsCount.textContent = 'Loading…';
+    els.activeFilterTag.hidden = true;
+  }
+
+  function showError() {
+    els.loadingState.hidden = true;
+    els.errorState.hidden = false;
+    els.emptyState.hidden = true;
+    els.cardGrid.hidden = true;
+    els.resultsCount.textContent = '';
+  }
+
+  function loadData() {
+    showLoading();
+    fetchRestaurants()
+      .then(function (data) {
+        state.all = data.map(function (r) {
+          var distance = haversineMeters(CENTER.lat, CENTER.lon, r.latitude, r.longitude);
+          return Object.assign({}, r, { distance: distance });
+        }).filter(function (r) { return r.distance <= MAX_RADIUS_M; });
+
+        els.loadingState.hidden = true;
+        render();
+      })
+      .catch(function () {
+        showError();
+      });
+  }
+
+  // ============================================================
+  // 10. EVENTS
+  // ============================================================
+  function debounce(fn, wait) {
+    var t;
+    return function () {
+      var args = arguments, ctx = this;
+      clearTimeout(t);
+      t = setTimeout(function () { fn.apply(ctx, args); }, wait);
+    };
+  }
+
+  els.searchInput.addEventListener('input', debounce(function (e) {
+    state.query = e.target.value;
+    render();
+  }, 120));
+
+  els.distanceSelect.addEventListener('change', function (e) {
+    state.maxDistance = parseInt(e.target.value, 10);
+    render();
+  });
+
+  els.sortSelect.addEventListener('change', function (e) {
+    state.sort = e.target.value;
+    render();
+  });
+
+  function resetFilters() {
+    state.query = '';
+    state.budget = 'all';
+    state.cuisine = 'All';
+    state.maxDistance = 2000;
+    state.sort = 'nearest';
+    els.searchInput.value = '';
+    els.distanceSelect.value = '2000';
+    els.sortSelect.value = 'nearest';
+    syncChipGroup(els.budgetChips, 'budget', 'all');
+    syncChipGroup(els.cuisineChips, 'cuisine', 'All');
+    render();
+  }
+
+  els.clearFiltersBtn.addEventListener('click', resetFilters);
+  els.emptyClearBtn.addEventListener('click', resetFilters);
+  els.retryBtn.addEventListener('click', loadData);
+
+  // Event delegation for the per-card rating buttons (informational only;
+  // ready to be wired to a real ratings API / modal later).
+  els.cardGrid.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-rating-btn]');
+    if (!btn) return;
+    // No-op today: rating is display-only. Hook a details popover / API call here.
+  });
+
+  // ============================================================
+  // 11. HEADER MAP CTA — Google Maps centred on postal code 550425
+  // ============================================================
+  els.viewAreaMapBtn.href = 'https://www.google.com/maps/search/?api=1&query=' +
+    encodeURIComponent('Singapore ' + CENTER.postalCode) +
+    '&center=' + CENTER.lat + ',' + CENTER.lon + '&zoom=16';
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  buildChips();
+  loadData();
+
+})();
+
+</script>
+
+</body>
+</html>
